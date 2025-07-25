@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>View Appointments</title>
+  <link rel="stylesheet" href="readappointments.css" />
+</head>
+<body>
+  <h1 class="main-title">Radiance Beauty Parlour</h1>
+  <p class="caption">Your Glow, Our Passion</p>
+
+  <div class="top-bar">
+    <h2>All Appointments</h2>
+    <a href="index.html" class="home-button">Home</a>
+  </div>
+
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search by Name or Email" />
+    <select id="sortSelect">
+      <option value="">Sort By</option>
+      <option value="name">Name</option>
+      <option value="date">Date</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="appointmentTableBody"></tbody>
+  </table>
+
+  <script src="readappointments.js"></script>
+</body>
+</html>
