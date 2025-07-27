@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.main-title {
+  margin-top: 25px;
+  color: #e91e63;
+  font-size: 36px;
+}
+
+.caption {
+  font-style: italic;
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+}
+
+.home-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #888;
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.form-title {
+  text-align: center;
+  color: #e91e63;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+table {
+  width: 100%;
+  border-spacing: 12px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+label {
+  font-weight: bold;
+}
+
+.submit-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #e91e63;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #d81b60;
+}
+#searchForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+#searchForm input {
+  padding: 10px;
+  width: 60%;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#searchForm button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #e91e63;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#searchForm button:hover {
+  background-color: #d81b60;
+}
