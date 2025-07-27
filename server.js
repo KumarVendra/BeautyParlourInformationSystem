@@ -102,5 +102,4 @@ if (require.main === module) {
     .catch(err => console.error("MongoDB connection error:", err));
 }
 
-// Export for testing
 module.exports = { app, Appointment };
