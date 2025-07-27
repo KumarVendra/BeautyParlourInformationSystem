@@ -13,10 +13,8 @@ document.getElementById('searchForm').addEventListener('submit', async function 
       return;
     }
 
-    // Store ID for update
     currentUserId = data._id;
 
-    // Populate form
     document.getElementById('customerName').value = data.customerName;
     document.getElementById('phoneNumber').value = data.phoneNumber;
     document.getElementById('gender').value = data.gender;
