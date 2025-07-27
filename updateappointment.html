@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Appointment</title>
+  <link rel="stylesheet" href="updateappointment.css" />
+</head>
+<body>
+  <h1 class="main-title">Radiance Beauty Parlour</h1>
+  <p class="caption">Your Glow, Our Passion</p>
+
+  <div class="form-container">
+    <a href="index.html" class="home-button">Home</a>
+    <h2 class="form-title">Edit Appointment</h2>
+
+    <form id="searchForm">
+      <input type="email" id="searchEmail" placeholder="Enter email to find appointment" required />
+      <button type="submit">Search</button>
+    </form>
+
+    <form id="updateForm" style="display: none;">
+      <table>
+        <tr>
+          <td><label for="customerName">Full Name:</label></td>
+          <td><input type="text" id="customerName" required /></td>
+        </tr>
+        <tr>
+          <td><label for="phoneNumber">Phone Number:</label></td>
+          <td><input type="tel" id="phoneNumber" required pattern="[0-9]{10}" /></td>
+        </tr>
+        <tr>
+          <td><label for="gender">Gender:</label></td>
+          <td>
+            <select id="gender" required>
+              <option value="">Select</option>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Other</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="service">Service:</label></td>
+          <td>
+            <select id="service" required>
+              <option value="">Select</option>
+              <option>Haircut</option>
+              <option>Facial</option>
+              <option>Manicure</option>
+              <option>Pedicure</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="date">Date:</label></td>
+          <td><input type="date" id="date" required /></td>
+        </tr>
+        <tr>
+          <td><label for="time">Time:</label></td>
+          <td><input type="time" id="time" required /></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:center;">
+            <button type="submit" class="submit-button">Update Appointment</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <script src="updateappointment.js"></script>
+</body>
+</html>
