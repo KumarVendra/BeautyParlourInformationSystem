@@ -6,12 +6,11 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// === Middleware ===
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname)); 
 
-// === Schema ===
+
 const appointmentSchema = new mongoose.Schema({
   customerName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -24,7 +23,6 @@ const appointmentSchema = new mongoose.Schema({
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
-// === Routes ===
 app.post('/api/appointments', async (req, res) => {
   try {
     const { customerName, email, phoneNumber, gender, service, date, time } = req.body;
@@ -93,16 +91,15 @@ app.delete('/api/appointments/:email', async (req, res) => {
   }
 });
 
-// === Only start the server if not in test ===
 if (require.main === module) {
   mongoose.connect('mongodb://localhost:27017/beautyparlour')
     .then(() => {
-      console.log("✅ MongoDB connected");
+      console.log("MongoDB connected");
       app.listen(PORT, () => {
-        console.log(`🚀 Server running at: http://localhost:${PORT}`);
+        console.log(`Server running at: http://localhost:${PORT}`);
       });
     })
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+    .catch(err => console.error("MongoDB connection error:", err));
 }
 
 // Export for testing
