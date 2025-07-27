@@ -1,7 +1,6 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
-const { app, Appointment } = require('./server'); // Ensure server.js exports both `app` and `Appointment`
-
+const { app, Appointment } = require('./server'); 
 beforeAll(async () => {
   await mongoose.connect('mongodb://localhost:27017/beautyparlour-test');
 });
@@ -15,7 +14,7 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
   let testEmail = 'testclient@example.com';
   let testId;
 
-  // 1. Create - Valid Appointment
+  //Test Case 1. Create - Valid Appointment
   test('POST /api/appointments - should create appointment', async () => {
     const res = await request(app).post('/api/appointments').send({
       customerName: 'Test Client',
@@ -30,7 +29,7 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     expect(res.body.message).toBe('Appointment booked successfully!');
   });
 
-  // 2. Create - Duplicate Email
+  //Test Case 2. Create - Duplicate Email
   test('POST /api/appointments - duplicate email should fail', async () => {
     const res = await request(app).post('/api/appointments').send({
       customerName: 'Another Client',
@@ -45,7 +44,7 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     expect(res.body.message).toBe('Email already registered.');
   });
 
-  // 3. Create - Missing Fields
+  //Test Case 3. Create - Missing Fields
   test('POST /api/appointments - missing fields returns 400', async () => {
     const res = await request(app).post('/api/appointments').send({
       email: 'incomplete@example.com'
@@ -53,7 +52,7 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     expect(res.statusCode).toBe(400);
   });
 
-  // 4. Read - Get All Appointments
+  //Test Case 4. Read - Get All Appointments
   test('GET /api/appointments - should return all appointments', async () => {
     const res = await request(app).get('/api/appointments');
     expect(res.statusCode).toBe(200);
@@ -61,20 +60,20 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     testId = res.body.find(a => a.email === testEmail)?._id;
   });
 
-  // 5. Read - Get Appointment by Email
+  //Test Case 5. Read - Get Appointment by Email
   test('GET /api/appointments/:email - should return appointment', async () => {
     const res = await request(app).get(`/api/appointments/${testEmail}`);
     expect(res.statusCode).toBe(200);
     expect(res.body.email).toBe(testEmail);
   });
 
-  // 6. Read - Invalid Email
+  //Test Case 6. Read - Invalid Email
   test('GET /api/appointments/unknown@example.com - should return 404', async () => {
     const res = await request(app).get('/api/appointments/unknown@example.com');
     expect(res.statusCode).toBe(404);
   });
 
-  // 7. Update - Valid Appointment
+  //Test Case 7. Update - Valid Appointment
   test('PUT /api/appointments/:id - should update appointment', async () => {
     const res = await request(app).put(`/api/appointments/${testId}`).send({
       service: 'Manicure',
@@ -84,7 +83,7 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     expect(res.body.service).toBe('Manicure');
   });
 
-  // 8. Update - Invalid ID
+  //Test Case 8. Update - Invalid ID
   test('PUT /api/appointments/invalidid - should return error', async () => {
     const res = await request(app).put('/api/appointments/invalidid').send({
       service: 'Haircut'
@@ -92,14 +91,14 @@ describe('Beauty Parlour Appointment - CRUD Tests', () => {
     expect(res.statusCode).toBe(500);
   });
 
-  // 9. Delete - Valid Appointment
+  //Test Case 9. Delete - Valid Appointment
   test('DELETE /api/appointments/:email - should delete appointment', async () => {
     const res = await request(app).delete(`/api/appointments/${testEmail}`);
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('Appointment deleted successfully');
   });
 
-  // 10. Delete - Already Deleted
+  //Test Case 10. Delete - Already Deleted
   test('DELETE /api/appointments/:email - deleting again returns 404', async () => {
     const res = await request(app).delete(`/api/appointments/${testEmail}`);
     expect(res.statusCode).toBe(404);
